@@ -753,6 +753,61 @@
   color: var(--lp-text-soft);
 }
 
+/* SECRET GUEST (顔写真なし：シルエット＋"?"表示) */
+.lp-guest--secret .lp-guest__photo--secret {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,61,154,0.35), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(56,215,255,0.3), transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(168,85,255,0.25), transparent 55%),
+    #0a0818;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.lp-guest--secret .lp-guest__photo--secret::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.03) 0,
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px,
+      transparent 20px
+    );
+  pointer-events: none;
+}
+.lp-guest__silhouette {
+  position: relative;
+  z-index: 1;
+  width: 55%;
+  max-width: 180px;
+  color: rgba(255,255,255,0.18);
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+}
+.lp-guest__silhouette svg { width: 100%; height: auto; display: block; }
+.lp-guest__secret-tag {
+  position: absolute;
+  top: 18px; left: 18px;
+  padding: 6px 14px;
+  background: var(--lp-neon);
+  color: var(--lp-ink);
+  border-radius: 999px;
+  font-family: var(--lp-f-display);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  font-weight: 800;
+  z-index: 2;
+  background-size: 200% 200%;
+  animation: lp-gradShift 4s linear infinite;
+}
+.lp-guest--secret .lp-guest__name {
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.4;
+}
+
 /* ==========================================================================
    Concerns (お悩み共感)
    ========================================================================== */
