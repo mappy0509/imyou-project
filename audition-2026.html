@@ -31,12 +31,13 @@
 
 <!-- ========== HERO ========== -->
 <section class="lp-hero" id="top">
-  <video
-    class="lp-hero__video"
-    autoplay muted loop playsinline preload="auto"
-    poster="/media/hero-poster.jpg">
-    <source src="/media/hero-bg.mp4" type="video/mp4" />
-  </video>
+  <div class="lp-hero__bg">
+    <div class="lp-hero__orb lp-hero__orb--1"></div>
+    <div class="lp-hero__orb lp-hero__orb--2"></div>
+    <div class="lp-hero__orb lp-hero__orb--3"></div>
+    <div class="lp-hero__beam lp-hero__beam--top"></div>
+    <div class="lp-hero__beam lp-hero__beam--bottom"></div>
+  </div>
   <div class="lp-hero__overlay"></div>
   <div class="lp-hero__grid"></div>
 
@@ -458,31 +459,6 @@
   </div>
 </section>
 
-<!-- ========== GALLERY ========== -->
-<section class="lp-section lp-section--dark">
-  <div class="lp-container">
-    <div class="lp-section-head">
-      <p class="lp-section-head__label">07 &mdash; THE NEXT STAGE</p>
-      <h2 class="lp-section-head__title">
-        <span>一緒に、</span><span><em>ここへ行こう。</em></span>
-      </h2>
-    </div>
-
-    <div class="lp-gallery">
-      <div class="lp-gallery__item"><img src="/assets/img/ixaon-01.jpg" alt="" loading="lazy" /></div>
-      <div class="lp-gallery__item"><img src="/assets/img/ixaon-02.jpg" alt="" loading="lazy" /></div>
-      <div class="lp-gallery__item"><img src="/assets/img/ixaon-03.jpg" alt="" loading="lazy" /></div>
-      <div class="lp-gallery__item"><img src="/assets/img/ixaon-04.jpg" alt="" loading="lazy" /></div>
-      <div class="lp-gallery__item"><img src="/assets/img/ixaon-05.jpg" alt="" loading="lazy" /></div>
-      <div class="lp-gallery__item"><img src="/assets/img/ixaon-06.jpg" alt="" loading="lazy" /></div>
-      <div class="lp-gallery__item"><img src="/assets/img/ixaon-07.jpg" alt="" loading="lazy" /></div>
-      <div class="lp-gallery__item"><img src="/assets/img/ixaon-08.jpg" alt="" loading="lazy" /></div>
-      <div class="lp-gallery__item"><img src="/assets/img/ixaon-09.jpg" alt="" loading="lazy" /></div>
-      <div class="lp-gallery__item"><img src="/assets/img/ixaon-10.jpg" alt="" loading="lazy" /></div>
-    </div>
-  </div>
-</section>
-
 <!-- ========== CTA ========== -->
 <section class="lp-cta-big" id="apply">
   <div class="lp-container lp-cta-big__content">
@@ -554,7 +530,7 @@
 
   // Reveal on scroll
   const targets = document.querySelectorAll(
-    '.lp-section-head, .lp-brand, .lp-benefit, .lp-step, .lp-guest, .lp-event__image, .lp-event__list, .lp-announce__inner, .lp-cta-big__content, .lp-concerns-card, .lp-all-ok, .lp-gallery__item'
+    '.lp-section-head, .lp-brand, .lp-benefit, .lp-step, .lp-guest, .lp-event__image, .lp-event__list, .lp-announce__inner, .lp-cta-big__content, .lp-concerns-card, .lp-all-ok'
   );
   targets.forEach((el) => el.classList.add('lp-reveal'));
 
