@@ -136,7 +136,7 @@
 .lp-header__cta:hover { transform: translateY(-2px); opacity: 1; }
 @keyframes lp-gradShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .lp-header__brand-sub { display: none; }
   .lp-header__cta { padding: 9px 16px; font-size: 10px; }
 }
@@ -147,6 +147,7 @@
 .lp-hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -1013,10 +1014,11 @@
 .lp-cta-big__title {
   font-family: var(--lp-f-serif);
   font-weight: 800;
-  font-size: clamp(36px, 7vw, 100px);
-  line-height: 1;
+  font-size: clamp(34px, 7vw, 100px);
+  line-height: 1.05;
   color: var(--lp-ink);
   letter-spacing: -0.02em;
+  word-break: keep-all;
 }
 .lp-cta-big__title em {
   font-style: italic;
@@ -1093,20 +1095,141 @@
 .lp-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 /* ==========================================================================
-   Responsive
+   Grid items: allow shrinking inside grid/flex
    ========================================================================== */
-@media (max-width: 1024px) {
-  .lp-brands { grid-template-columns: 1fr; }
-  .lp-benefits { grid-template-columns: repeat(2, 1fr); }
-  .lp-guests { grid-template-columns: repeat(2, 1fr); }
-  .lp-concerns-grid { grid-template-columns: 1fr; }
-  .lp-event { grid-template-columns: 1fr; }
-  .lp-event__image { max-width: 420px; margin: 0 auto; }
+.lp-brand, .lp-benefit, .lp-guest, .lp-step, .lp-concerns-card, .lp-event__list { min-width: 0; }
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .lp-hero__orb,
+  .lp-header__cta,
+  .lp-btn--primary,
+  .lp-cta-big__title em,
+  .lp-guest__secret-tag,
+  .lp-hero__title em,
+  .lp-marquee__track { animation: none !important; }
+  .lp-reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
 }
 
+/* ==========================================================================
+   Responsive — large tablet / small desktop
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .lp-hero__beam--top { top: 20%; }
+  .lp-hero__beam--bottom { bottom: 26%; }
+}
+
+@media (max-width: 1024px) {
+  .lp-benefits { grid-template-columns: repeat(2, 1fr); }
+  .lp-concerns-grid { grid-template-columns: 1fr; gap: 24px; }
+  .lp-event { grid-template-columns: 1fr; gap: 32px; }
+  .lp-event__image { max-width: 520px; margin: 0 auto; }
+  .lp-event__list { max-width: 720px; margin: 0 auto; }
+  .lp-announce__inner { padding: clamp(36px, 6vw, 56px) clamp(26px, 5vw, 48px); }
+}
+
+/* ==========================================================================
+   Tablet portrait / large phone
+   ========================================================================== */
+@media (max-width: 860px) {
+  .lp-section { padding: clamp(64px, 11vw, 120px) 0; }
+  .lp-section-head { margin-bottom: 48px; }
+  .lp-brands { grid-template-columns: 1fr; }
+  .lp-guests { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .lp-hero__orb--1 { width: 360px; height: 360px; top: -100px; left: -80px; }
+  .lp-hero__orb--2 { width: 440px; height: 440px; right: -140px; }
+  .lp-hero__orb--3 { width: 380px; height: 380px; }
+}
+
+/* ==========================================================================
+   Mobile (hero meta + steps + hero cta)
+   ========================================================================== */
+@media (max-width: 720px) {
+  .lp-hero { padding: 104px 0 72px; }
+  .lp-hero__scroll { display: none; }
+  .lp-hero__meta { grid-template-columns: 1fr; width: 100%; }
+  .lp-hero__meta-item { border-right: 0; border-bottom: 1px solid var(--lp-line); padding: 14px 22px; }
+  .lp-hero__meta-item:last-child { border-bottom: 0; }
+  .lp-hero__beam { opacity: 0.28; }
+
+  .lp-step { grid-template-columns: 68px 1fr; grid-template-rows: auto auto; row-gap: 4px; padding: 22px 20px; }
+  .lp-step__no { font-size: 44px; }
+  .lp-step__body { grid-column: 2; grid-row: 1; }
+  .lp-step__pill { grid-column: 2; grid-row: 2; justify-self: flex-start; margin-top: 4px; }
+
+  .lp-cta-big__buttons .lp-btn { width: 100%; max-width: 340px; justify-content: center; }
+  .lp-marquee__track { gap: 26px; }
+}
+
+/* ==========================================================================
+   Small mobile
+   ========================================================================== */
 @media (max-width: 640px) {
   .lp-benefits { grid-template-columns: 1fr; }
-  .lp-guests { grid-template-columns: 1fr; }
-  .lp-event__row { grid-template-columns: 1fr; gap: 6px; }
+  .lp-guests { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .lp-event__row { grid-template-columns: 1fr; gap: 6px; padding: 18px 22px; }
+  .lp-event__label { font-size: 9px; }
+
+  .lp-hero__cta { flex-direction: column; align-items: stretch; }
   .lp-hero__cta .lp-btn { width: 100%; justify-content: center; }
+
+  .lp-header__cta span { display: none; }
+  .lp-header__cta { padding: 12px; width: 44px; height: 44px; justify-content: center; }
+
+  .lp-announce__tag { font-size: 9px; padding: 5px 12px; }
+  .lp-all-ok { font-size: clamp(18px, 5vw, 26px); padding: 14px; }
+
+  .lp-section-head__label::before,
+  .lp-section-head__label::after { width: 18px; }
+  .lp-section-head__label { font-size: 10px; letter-spacing: 0.22em; }
+
+  .lp-hero__tag { font-size: 10px; padding: 7px 14px; letter-spacing: 0.22em; }
+  .lp-hero__title { margin-top: 22px; }
+  .lp-hero__jp { margin-top: 16px; }
+
+  .lp-benefit { min-height: auto; }
+
+  .lp-concerns-list li { font-size: 13px; }
+  .lp-concerns-card { padding: 28px 22px; }
+
+  .lp-marquee { padding: 16px 0; }
+  .lp-marquee__track { font-size: 14px; gap: 22px; }
+
+  .lp-footer__links { gap: 12px 16px; font-size: 10px; }
+}
+
+/* ==========================================================================
+   Extra small mobile (< iPhone SE)
+   ========================================================================== */
+@media (max-width: 380px) {
+  .lp-container,
+  .lp-header__inner,
+  .lp-hero__content { padding-left: 16px; padding-right: 16px; }
+
+  .lp-hero__title { font-size: clamp(42px, 14vw, 64px); }
+  .lp-hero__jp { font-size: 18px; }
+  .lp-hero__meta-item { padding: 12px 18px; }
+  .lp-hero__meta-value { font-size: 15px; }
+
+  .lp-announce__title { font-size: 24px; }
+  .lp-section-head__title { font-size: 26px; }
+  .lp-cta-big__title { font-size: 34px; }
+  .lp-cta-big__title em { display: inline-block; }
+
+  .lp-brand { padding: 28px 22px; }
+  .lp-brand__no { font-size: 42px; }
+  .lp-benefit { padding: 24px 22px; }
+
+  .lp-header__brand { font-size: 12px; letter-spacing: 0.12em; }
+}
+
+/* ==========================================================================
+   Landscape phone — short viewport
+   ========================================================================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .lp-hero { min-height: auto; padding: 104px 0 56px; }
+  .lp-hero__title { font-size: clamp(44px, 8vw, 72px); }
+  .lp-hero__scroll { display: none; }
 }
