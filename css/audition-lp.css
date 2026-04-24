@@ -393,6 +393,21 @@
 }
 .lp-btn--ghost:hover { background: rgba(255,255,255,0.06); transform: translateY(-2px); opacity: 1; border-color: rgba(255,255,255,0.28); }
 
+/* LINE 公式カラーの応募ボタン */
+.lp-btn--line {
+  background: #06C755;
+  color: #ffffff;
+  box-shadow: 0 14px 32px -10px rgba(6,199,85,0.55), inset 0 -2px 0 rgba(0,0,0,0.12);
+  letter-spacing: 0.18em;
+}
+.lp-btn--line:hover {
+  background: #05B44C;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -10px rgba(6,199,85,0.7), inset 0 -2px 0 rgba(0,0,0,0.12);
+  opacity: 1;
+}
+
 .lp-btn--large { padding: 20px 40px; font-size: 13px; letter-spacing: 0.22em; }
 
 /* ==========================================================================
@@ -1207,6 +1222,16 @@
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
+}
+.lp-cta-big__hint {
+  margin-top: 22px;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--lp-text-mute);
+}
+.lp-cta-big__hint strong {
+  color: var(--lp-text);
+  font-weight: 700;
 }
 
 /* ==========================================================================
