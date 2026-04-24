@@ -7,3 +7,7 @@ node_modules
 .idea
 .vscode
 Thumbs.db
+
+# ソース素材（クライアント提供の生ファイル）は git 管理外
+# 最適化・リネーム後のものだけ assets/ と media/ にコミット
+/img/
