@@ -467,6 +467,29 @@
 }
 
 /* ==========================================================================
+   QUICK INFO (first-view direct below)
+   ========================================================================== */
+.lp-quick-info {
+  position: relative;
+  padding: clamp(40px, 6vw, 72px) 0 clamp(48px, 6vw, 80px);
+  background: linear-gradient(180deg, var(--lp-bg) 0%, #07060f 100%);
+  border-top: 1px solid var(--lp-line);
+  overflow: hidden;
+}
+.lp-quick-info::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--lp-pink) 25%, var(--lp-purple) 50%, var(--lp-cyan) 75%, transparent 100%);
+  opacity: 0.7;
+}
+.lp-event__list--quick {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
    CAST STRIP (first-view celebrity impact)
    ========================================================================== */
 .lp-cast-strip {
