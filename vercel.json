@@ -7,12 +7,12 @@
   ],
   "rewrites": [
     {
-      "source": "/",
+      "source": "/:path((?!css/|js/|assets/|media/|.*\\.).*)",
       "has": [{ "type": "host", "value": "nowor8.com" }],
       "destination": "/now-or-eight"
     },
     {
-      "source": "/",
+      "source": "/:path((?!css/|js/|assets/|media/|.*\\.).*)",
       "has": [{ "type": "host", "value": "www.nowor8.com" }],
       "destination": "/now-or-eight"
     }
