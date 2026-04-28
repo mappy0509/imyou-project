@@ -259,11 +259,14 @@
   margin-top: 26px;
   font-family: var(--lp-f-display);
   font-weight: 800;
-  font-size: clamp(48px, 11vw, 160px);
-  line-height: 0.9;
-  letter-spacing: -0.03em;
+  /* 1行固定: 実フォント幅（Unbounded 800 相当）を考慮して、
+     どの画面でも横幅に収まるよう vw とキャップを保守的に設定 */
+  font-size: clamp(38px, 14vw, 180px);
+  line-height: 1;
+  letter-spacing: -0.04em;
   color: var(--lp-ink);
   text-shadow: 0 0 40px rgba(168,85,255,0.3);
+  white-space: nowrap;
 }
 .lp-hero__title em {
   font-style: normal;
@@ -1471,10 +1474,9 @@
   .lp-header__inner,
   .lp-hero__content { padding-left: 16px; padding-right: 16px; }
 
-  .lp-hero__title { font-size: clamp(42px, 14vw, 64px); }
+  /* 1行収まり優先：380px 以下では vw 値を維持し小さくなりすぎないようにする */
+  .lp-hero__title { font-size: clamp(38px, 16vw, 64px); letter-spacing: -0.05em; }
   .lp-hero__jp { font-size: 18px; }
-  .lp-hero__meta-item { padding: 12px 18px; }
-  .lp-hero__meta-value { font-size: 15px; }
 
   .lp-announce__title { font-size: 24px; }
   .lp-section-head__title { font-size: 26px; }
