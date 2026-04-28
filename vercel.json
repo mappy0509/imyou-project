@@ -4,5 +4,17 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/audition-2026", "destination": "/now-or-eight", "permanent": true }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "nowor8.com" }],
+      "destination": "/now-or-eight"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.nowor8.com" }],
+      "destination": "/now-or-eight"
+    }
   ]
 }
