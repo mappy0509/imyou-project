@@ -470,6 +470,377 @@
 }
 
 /* ==========================================================================
+   BARK UP TV section
+   ========================================================================== */
+.lp-barkup { position: relative; }
+
+/* About: split copy / video */
+.lp-barkup-about {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
+  margin-bottom: clamp(60px, 8vw, 100px);
+}
+.lp-barkup-about__kicker {
+  font-family: var(--lp-f-display);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  font-weight: 700;
+  color: var(--lp-text-mute);
+  margin-bottom: 18px;
+}
+.lp-barkup-about__title {
+  font-family: var(--lp-f-display);
+  font-weight: 800;
+  font-size: clamp(24px, 3.4vw, 40px);
+  line-height: 1.3;
+  color: var(--lp-ink);
+  letter-spacing: -0.005em;
+}
+.lp-barkup-about__text {
+  margin-top: 22px;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--lp-text-soft);
+}
+.lp-barkup-about__text strong {
+  color: var(--lp-ink);
+  background: var(--lp-neon);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+.lp-barkup-facts {
+  margin-top: 28px;
+  display: grid;
+  gap: 1px;
+  background: var(--lp-line);
+  border: 1px solid var(--lp-line);
+  border-radius: var(--lp-radius);
+  overflow: hidden;
+}
+.lp-barkup-facts li {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 18px;
+  padding: 14px 22px;
+  background: var(--lp-bg-3);
+  align-items: baseline;
+}
+.lp-barkup-facts span {
+  font-family: var(--lp-f-display);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  color: var(--lp-text-mute);
+  font-weight: 700;
+}
+.lp-barkup-facts strong {
+  font-size: 14px;
+  color: var(--lp-text);
+  font-weight: 600;
+  font-family: var(--lp-f-sans);
+}
+
+.lp-barkup-about__video {
+  position: relative;
+  border-radius: var(--lp-radius);
+  overflow: hidden;
+  border: 1px solid var(--lp-line);
+  background: #000;
+  box-shadow: 0 24px 60px -24px rgba(0,0,0,0.6);
+}
+.lp-barkup-about__video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #000;
+}
+.lp-barkup-about__video-cap {
+  position: absolute;
+  top: 14px; left: 16px;
+  padding: 6px 14px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px;
+  font-family: var(--lp-f-display);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  color: var(--lp-ink);
+  pointer-events: none;
+}
+
+/* Theme song artists */
+.lp-barkup-artists { margin-bottom: clamp(60px, 8vw, 100px); }
+.lp-barkup-artists__head { text-align: center; margin-bottom: 36px; }
+.lp-barkup-artists__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--lp-f-display);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--lp-text-mute);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.lp-barkup-artists__label::before,
+.lp-barkup-artists__label::after {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--lp-line);
+}
+.lp-barkup-artists__title {
+  font-family: var(--lp-f-display);
+  font-weight: 800;
+  font-size: clamp(22px, 2.8vw, 32px);
+  color: var(--lp-ink);
+  line-height: 1.4;
+}
+.lp-barkup-artists__sub {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--lp-text-soft);
+}
+
+.lp-barkup-artists__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+.lp-artist {
+  position: relative;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--lp-line);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform .4s var(--lp-ease), border-color .35s var(--lp-ease);
+  min-width: 0;
+}
+.lp-artist:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.22);
+}
+.lp-artist__photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #0e0c1d;
+}
+.lp-artist__photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .8s var(--lp-ease);
+}
+.lp-artist:hover .lp-artist__photo img { transform: scale(1.06); }
+.lp-artist__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(5,5,10,0.6) 100%);
+  pointer-events: none;
+}
+.lp-artist__name {
+  padding: 14px 16px 4px;
+  font-family: var(--lp-f-display);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--lp-ink);
+  line-height: 1.3;
+}
+.lp-artist__song {
+  padding: 0 16px 14px;
+  font-size: 11px;
+  color: var(--lp-text-mute);
+  letter-spacing: 0.04em;
+}
+.lp-artist__song::before {
+  content: '♫ ';
+  color: var(--lp-pink);
+  font-weight: 700;
+}
+
+/* FES callout */
+.lp-barkup-fes {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(28px, 4vw, 60px);
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255,61,154,0.08), rgba(168,85,255,0.06) 50%, rgba(56,215,255,0.08));
+  border: 1px solid var(--lp-line);
+  border-radius: var(--lp-radius);
+  padding: clamp(28px, 4vw, 56px);
+  margin-bottom: clamp(60px, 8vw, 100px);
+  position: relative;
+  overflow: hidden;
+}
+.lp-barkup-fes::before {
+  content: '';
+  position: absolute;
+  top: -50px; right: -80px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--lp-gold), transparent 65%);
+  filter: blur(60px);
+  opacity: 0.25;
+}
+.lp-barkup-fes > * { position: relative; }
+.lp-barkup-fes__visual {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--lp-line);
+  background: #000;
+}
+.lp-barkup-fes__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.lp-barkup-fes__label {
+  font-family: var(--lp-f-display);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--lp-text-mute);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.lp-barkup-fes__title {
+  font-family: var(--lp-f-serif);
+  font-weight: 800;
+  font-size: clamp(24px, 3.4vw, 42px);
+  line-height: 1.25;
+  color: var(--lp-ink);
+  letter-spacing: -0.01em;
+}
+.lp-barkup-fes__title em {
+  font-style: italic;
+  background: var(--lp-neon);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.lp-barkup-fes__text {
+  margin-top: 18px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--lp-text-soft);
+}
+.lp-barkup-fes__text strong {
+  color: var(--lp-ink);
+  font-weight: 700;
+}
+.lp-barkup-fes__meta {
+  margin-top: 22px;
+  display: grid;
+  gap: 8px;
+}
+.lp-barkup-fes__meta li {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 18px;
+  align-items: baseline;
+  font-size: 13px;
+}
+.lp-barkup-fes__meta span {
+  font-family: var(--lp-f-display);
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  color: var(--lp-text-mute);
+  font-weight: 700;
+}
+.lp-barkup-fes__meta strong {
+  color: var(--lp-text);
+  font-weight: 600;
+  font-family: var(--lp-f-display);
+}
+
+/* DEEP JAPAN partnership */
+.lp-barkup-deep {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(28px, 4vw, 60px);
+  align-items: center;
+}
+.lp-barkup-deep__label {
+  font-family: var(--lp-f-display);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--lp-text-mute);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.lp-barkup-deep__title {
+  font-family: var(--lp-f-display);
+  font-weight: 800;
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1.3;
+  color: var(--lp-ink);
+}
+.lp-barkup-deep__title em {
+  font-style: normal;
+  background: var(--lp-neon);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.lp-barkup-deep__text {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--lp-text-soft);
+}
+.lp-barkup-deep__text strong {
+  color: var(--lp-ink);
+  font-weight: 700;
+}
+.lp-barkup-deep__chips {
+  margin-top: 22px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.lp-barkup-deep__chips li {
+  padding: 6px 14px;
+  border: 1px solid var(--lp-line);
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--lp-text);
+  background: rgba(255,255,255,0.03);
+}
+.lp-barkup-deep__visual {
+  border-radius: var(--lp-radius);
+  overflow: hidden;
+  border: 1px solid var(--lp-line);
+  background: #000;
+}
+.lp-barkup-deep__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .lp-barkup-about,
+  .lp-barkup-fes,
+  .lp-barkup-deep { grid-template-columns: 1fr; }
+  .lp-barkup-fes__visual,
+  .lp-barkup-deep__visual { max-width: 480px; margin: 0 auto; }
+}
+@media (max-width: 640px) {
+  .lp-barkup-about__video-cap { font-size: 9px; padding: 5px 10px; }
+  .lp-barkup-facts li { grid-template-columns: 1fr; gap: 4px; padding: 12px 18px; }
+  .lp-barkup-fes__meta li { grid-template-columns: 1fr; gap: 2px; }
+  .lp-barkup-artists__grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .lp-artist__name { font-size: 12px; padding: 10px 12px 2px; }
+  .lp-artist__song { font-size: 10px; padding: 0 12px 12px; }
+}
+
+/* ==========================================================================
    QUICK INFO (first-view direct below)
    ========================================================================== */
 .lp-quick-info {
